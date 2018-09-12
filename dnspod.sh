@@ -22,7 +22,7 @@ fi
 echo "$HOST.$DOMAIN"
 
 OPTIONS="login_token=${TOKEN}";
-OUT=$(curl -s -k "https://dnsapi.cn/Domain.List" -d "${OPTIONS}");
+OUT=$(curl --user-agent 'Chrome/54.0 (Windows NT 10.0)' -s -k "https://dnsapi.cn/Domain.List" -d "${OPTIONS}");
 for line in $OUT;do
     if [ "$(echo "$line"|grep '<id>' -c)" != 0 ];then
         DOMAIN_ID=${line%<*};
@@ -41,7 +41,7 @@ done
 
 echo "$DOMAIN_NAME $DOMAIN_ID"
 
-OUT=$(curl -s -k "https://dnsapi.cn/Record.List" -d "${OPTIONS}&domain_id=${DOMAIN_ID}")
+OUT=$(curl --user-agent 'Chrome/54.0 (Windows NT 10.0)' -s -k "https://dnsapi.cn/Record.List" -d "${OPTIONS}&domain_id=${DOMAIN_ID}")
 for line in $OUT;do
     if [ "$(echo "$line"|grep '<id>' -c)" != 0 ];then
         RECORD_ID=${line%<*};
@@ -61,10 +61,10 @@ echo "$RECORD_NAME:$RECORD_ID"
 
 if [ "$RECORD_NAME" = "$HOST" ];then
     echo "UPDATE RECORD"
-    OUT=$(curl -k -s "https://dnsapi.cn/Record.Modify" -d "${OPTIONS}&domain_id=${DOMAIN_ID}&record_id=${RECORD_ID}&sub_domain=${HOST}&record_line=${RECORD_LINE}&record_type=TXT&value=${TXT_TOKEN}")
+    OUT=$(curl --user-agent 'Chrome/54.0 (Windows NT 10.0)' -k -s "https://dnsapi.cn/Record.Modify" -d "${OPTIONS}&domain_id=${DOMAIN_ID}&record_id=${RECORD_ID}&sub_domain=${HOST}&record_line=${RECORD_LINE}&record_type=TXT&value=${TXT_TOKEN}")
 else
     echo "NEW RECORD"
-    OUT=$(curl -k -s "https://dnsapi.cn/Record.Create" -d "${OPTIONS}&domain_id=${DOMAIN_ID}&sub_domain=${HOST}&record_line=${RECORD_LINE}&record_type=TXT&value=${TXT_TOKEN}")
+    OUT=$(curl --user-agent 'Chrome/54.0 (Windows NT 10.0)' -k -s "https://dnsapi.cn/Record.Create" -d "${OPTIONS}&domain_id=${DOMAIN_ID}&sub_domain=${HOST}&record_line=${RECORD_LINE}&record_type=TXT&value=${TXT_TOKEN}")
 fi
 
 if [ "$(echo "$OUT"|grep 'successful' -c)" != 0 ];then
