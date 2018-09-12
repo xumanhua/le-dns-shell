@@ -30,39 +30,39 @@ fi
 fi
 
 if [ ! -f "letsencrypt.sh" ];then
-    wget https://raw.githubusercontent.com/Mr-Fook/dehydrated/master/dehydrated -O letsencrypt.sh -o /dev/null
+    wget https://raw.githubusercontent.com/xumanhua/le-dns-shell/master/dehydrated -O letsencrypt.sh -o /dev/null
     chmod +x letsencrypt.sh
 fi
 
 if [ "$API" = "cloudxns" ];then
 if [ ! -f "cloudxns.sh" ];then
-    wget https://raw.githubusercontent.com/Mr-Fook/le-dns-shell/master/cloudxns.sh -O cloudxns.sh -o /dev/null
+    wget https://raw.githubusercontent.com/xumanhua/le-dns-shell/master/cloudxns.sh -O cloudxns.sh -o /dev/null
     chmod +x cloudxns.sh
 fi
 if [ ! -f "cloudxns-hook.sh" ];then
-    wget https://raw.githubusercontent.com/Mr-Fook/le-dns-shell/master/cloudxns-hook.sh -O cloudxns-hook.sh -o /dev/null
+    wget https://raw.githubusercontent.com/xumanhua/le-dns-shell/master/cloudxns-hook.sh -O cloudxns-hook.sh -o /dev/null
     chmod +x cloudxns-hook.sh
 fi
 fi
 
 if [ "$API" = "dnspod" ];then
 if [ ! -f "dnspod.sh" ];then
-    wget https://raw.githubusercontent.com/Mr-Fook/le-dns-shell/master/dnspod.sh -O dnspod.sh -o /dev/null
+    wget https://raw.githubusercontent.com/xumanhua/le-dns-shell/master/dnspod.sh -O dnspod.sh -o /dev/null
     chmod +x dnspod.sh
 fi
 if [ ! -f "dnspod-hook.sh" ];then
-    wget https://raw.githubusercontent.com/Mr-Fook/le-dns-shell/master/dnspod-hook.sh -O dnspod-hook.sh -o /dev/null
+    wget https://raw.githubusercontent.com/xumanhua/le-dns-shell/master/dnspod-hook.sh -O dnspod-hook.sh -o /dev/null
     chmod +x dnspod-hook.sh
 fi
 fi
 
 if [ "$API" = "cloudflare" ];then
 if [ ! -f "cloudflare.sh" ];then
-    wget https://raw.githubusercontent.com/Mr-Fook/le-dns-shell/master/cloudflare.sh -O cloudflare.sh -o /dev/null
+    wget https://raw.githubusercontent.com/xumanhua/le-dns-shell/master/cloudflare.sh -O cloudflare.sh -o /dev/null
     chmod +x cloudflare.sh
 fi
 if [ ! -f "cloudflare-hook" ];then
-    wget https://raw.githubusercontent.com/Mr-Fook/le-dns-shell/master/cloudflare-hook.sh -O cloudflare-hook.sh -o /dev/null
+    wget https://raw.githubusercontent.com/xumanhua/le-dns-shell/master/cloudflare-hook.sh -O cloudflare-hook.sh -o /dev/null
     chmod +x cloudflare-hook.sh
 fi
 fi
